@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Pomofocus</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <h1>Enhanced Pomofocus</h1>
+            <div class="header-controls">
+                <button id="theme-toggle" class="icon-button">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="auth-button" class="auth-button">
+                    <i class="fas fa-user"></i>
+                    <span>Sign in with Google</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="timer-section">
+                <div class="timer-display">
+                    <div class="timer-circle">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle class="timer-background" cx="50" cy="50" r="45"></circle>
+                            <circle class="timer-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="timer-text">
+                            <span id="minutes">25</span>:<span id="seconds">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button id="start-timer" class="control-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="pause-timer" class="control-button" disabled>
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button id="reset-timer" class="control-button">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="timer-settings">
+                    <div class="setting">
+                        <label for="work-duration">Work Duration (minutes):</label>
+                        <input type="number" id="work-duration" min="1" max="60" value="25">
+                    </div>
+                    <div class="setting">
+                        <label for="break-duration">Break Duration (minutes):</label>
+                        <input type="number" id="break-duration" min="1" max="30" value="5">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Tasks</h2>
+                    <button id="add-task" class="add-button">
+                        <i class="fas fa-plus"></i>
+                        Add Task
+                    </button>
+                </div>
+                <div class="tasks-list" id="tasks-list">
+                    <!-- Tasks will be added here dynamically -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Task Modal -->
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Title</label>
+                    <input type="text" id="task-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Deadline</label>
+                    <input type="datetime-local" id="task-deadline">
+                </div>
+                <button type="submit" class="submit-button">Save Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script>
+</body>
+</html> 
